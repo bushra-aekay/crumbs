@@ -1,3 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +18,105 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Custom class for the hexagon shape */
+.link-hexagon {
+  position: relative;
+  display: inline-block;
+  background-color: #ff3131; /* Tailwind's bg-blue-500 */
+  color: white;
+  padding: 0.2rem 1.3rem; /* Adjust padding for shape and text */
+  clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect for hex */
+.link-hexagon:hover {
+  background-color: #fdf1df;
+  color: #ff3131; 
+  transform: scale(1.1); 
+}
+
+/* custom class for ribbon shape */
+.link-ribbon{
+  position: relative;
+  display: inline-block;
+  background-color: #ff3131; /* Tailwind's bg-blue-500 */
+  color: white;
+  padding: 1rem 2.5rem; /* Adjust padding for shape and text */
+  clip-path: polygon(0% 0%, 100% 0%, 80% 50%, 100% 100%, 0% 100%, 20% 50%);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+/* Hover effect for ribbon */
+/* Hover effect */
+.link-ribbon:hover {
+  transform: scale(1.1); 
+}
+/* Container for the cookie image, adjusted for flexbox */
+.cookie-container-flex {
+  width: 28vw; /* The width is now 30% of the viewport width */
+  height: 28vw; /* The height is now 30% of the viewport width, maintaining a square */
+  overflow: hidden;
+  margin-right: 2vw; /* Adds space between the cookie and the text, 2% of viewport width */
+  margin-left: -10vw; /* The "peek" amount is now 8% of the viewport width */
+}
+
+/* Styles for the image itself */
+.cookie-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: rotate(290deg); /* The rotation you want to keep */
+}
+
+.text-container {
+  max-width: 80vw; /* Limits the width of the text container to 40% of the viewport width */
+}
+
+/* --------------------------------- */
+/* --------------------------------- */
+/* extra code here */
+/* Styles for the container that acts as the viewing window */
+.coaokie-container {
+    position: absolute; /* Positions the container relative to the parent section/page */
+    left: -85px; /* Moves the container to the right, hiding part of it off-screen */
+    top: 100%; /* Pushes the container halfway down the screen */
+    transform: translateY(-50%); /* Centers the container vertically */
+    width: 310px; /* The size of your image container */
+    height: 310px; /* The size of your image container */
+    overflow: hidden; /* This is the key! It hides anything that goes outside this box */
+}
+/* Styles for the image itself */
+.cooakie-image {
+    position: absolute; /* Allows us to position the image independently */
+    right: 0; /* Positions the image against the right edge of its container */
+    width: 100%; /* Default width */
+    height: 100%; /* Default height */
+    object-fit: cover;
+    transform: rotate(290deg);
+    /* transform: scale(2); This is the key! It makes the image twice as large as its container */
+}
+.sideways-image{
+  transform: rotate(90deg);
+}
+.flipped-image{
+  transform: scaleX(-1);
+}
+/* Custom class for a cropped image container */
+.cropped-image-container {
+  width: 20%;         /* from w-1/2 */
+  height: 50%;       /* from h-full */
+  overflow: hidden;   /* from overflow-hidden */
+}
+
+/* This class applies to the image inside the container */
+.cropped-image {
+  width: 50%;         /* from w-full */
+  height: 50%;        /* from h-full */
+  object-fit: cover;   /* from object-cover */
+  object-position: top; /* from object-top */
+}
+
+/* Extra code ends here */
+/* ------------------------------- */
+/* -------------------------------- */
