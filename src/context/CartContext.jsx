@@ -1,9 +1,18 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useCallback } from "react";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
+  const [toast, setToast] = useState(null);
+
+  const showToast = useCallback((message) => {
+    setToast(message);
+  }, []);
+
+  const hideToast = useCallback(() => {
+    setToast(null);
+  }, []);
 
   const addToCart = (item) => {
     setCartItems((prev) => {
@@ -19,6 +28,7 @@ export function CartProvider({ children }) {
       }
       return [...prev, item];
     });
+    showToast(`${item.name} added to cart!`);
   };
 
   const updateQuantity = (id, size, quantity) => {
@@ -64,6 +74,8 @@ export function CartProvider({ children }) {
         clearCart,
         getCartTotal,
         getCartCount,
+        toast,
+        hideToast,
       }}
     >
       {children}
